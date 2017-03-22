@@ -42,7 +42,7 @@ int main() {
 		unique_ptr<string[]> names(new string[size]);
 		unique_ptr<int[]> numShares(new int[size]);
 		unique_ptr<float[]> prices(new float[size]);
-		
+
 		//Read data into parallel arrays
 		int i = 0;
 		while (!inpFile.eof()) {
@@ -54,13 +54,13 @@ int main() {
 		}
 		//Close the file
 		inpFile.close();
-		
+
 		//Create a dynamic array of pointers
 		unique_ptr<string[]> symbolsptr(new string[size]);
 		for (int count = 0; count < size; count++) {
-			symbolsptr[count] = names[count];
+			symbolsptr[count] = symbols[count];
 		}
-		
+
 		//Sort symbols
 		sortSelect(symbolsptr.get(), size);
 
@@ -72,10 +72,10 @@ int main() {
 			//Output 3 to a line
 			if (counter % 3 == 0)
 				cout << endl;
-			cout << symbols[i] << ' ';
+			cout << symbolsptr[i] << ' ';
 			counter++;
 		}
-		
+
 		cout << endl;
 		cout << endl;
 
@@ -96,7 +96,7 @@ int main() {
 		cout << setprecision(2);
 		cout << fixed;
 		int width = 30;
-		
+
 		//Output all the data for the requested trading symbol
 		cout << setw(width) << left << "Company Name: " << right << setw(width) << names[foundIndex] << endl;;
 		cout << setw(width) << left << "Number of Shares: " << right << setw(width) << numShares[foundIndex] << endl;;
@@ -116,10 +116,20 @@ int main() {
 
 //Searches for the index of the stock symbol
 int linearSearch(string * symbols, int size, string searchSymbol) {
+	string word;
+	word = searchSymbol;
+
+	//Convert the searched string to uppercase
+	for (int j = 0; j < word.length(); j++) {
+		searchSymbol[j] = toupper(searchSymbol[j]);
+	}
+
+	//Search for the symbol
 	for (int i = 0; i < size; i++) {
 		if (symbols[i] == searchSymbol)
 			return i;
 	}
+
 	return -1;
 
 }
