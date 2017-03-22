@@ -56,7 +56,7 @@ int main() {
 		//Close the file
 		inpFile.close();
 
-		unique_ptr<string[]> symbolsUnsorted = move(symbols[]);
+		//unique_ptr<string[]> symbolsUnsorted = move(symbols);
 		//Sort symbols
 		sortSelect(symbols.get(), size);
 
@@ -106,6 +106,8 @@ int main() {
 
 	return 0;
 }
+
+//Searches for the index of the stock symbol
 int linearSearch(string * symbolsUnsorted, int size, string searchSymbol) {
 	for (int i = 0; i < size; i++) {
 		if (symbolsUnsorted[i] == searchSymbol)
@@ -114,6 +116,8 @@ int linearSearch(string * symbolsUnsorted, int size, string searchSymbol) {
 	return -1;
 
 }
+
+//Sorts the array of stock symbols
 void sortSelect(string * symbols, int size) {
 	int startScan, minIndex;
 	string minElem;
