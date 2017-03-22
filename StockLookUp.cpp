@@ -55,10 +55,13 @@ int main() {
 		}
 		//Close the file
 		inpFile.close();
-
+		unique_ptr<string[]> symbolsptr(new string[size]);
+		for (int count = 0; count < size; count++) {
+			symbolsptr[count] = names[count];
+		}
 		//unique_ptr<string[]> symbolsUnsorted = move(symbols);
 		//Sort symbols
-		sortSelect(symbols.get(), size);
+		sortSelect(symbolsptr.get(), size);
 
 		//Output sorted stocks
 		int counter = 0;
