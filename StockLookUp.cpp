@@ -19,7 +19,7 @@ into arrays, display sorted trading symbols 3 to a line, prompt user for trading
 symbol to search, and display result of trading symbol search with 2 digits
 precision for floating point numbers*/
 void sortSelect(string * symbol, int size);
-int linearSearch(string * symbolsUnsorted, int size, string searchSymbol);
+int linearSearch(string * symbols, int size, string searchSymbol);
 
 int main() {
 	//Declare variables
@@ -81,7 +81,7 @@ int main() {
 		cout << endl;
 
 		//Search the array of pointers for the trading symbol
-		foundIndex = linearSearch(symbolsUnsorted.get(), size, searchSymbol);
+		foundIndex = linearSearch(symbols.get(), size, searchSymbol);
 
 		//Calculate the total value of all the shares
 		float value = 0;
@@ -108,9 +108,9 @@ int main() {
 }
 
 //Searches for the index of the stock symbol
-int linearSearch(string * symbolsUnsorted, int size, string searchSymbol) {
+int linearSearch(string * symbols, int size, string searchSymbol) {
 	for (int i = 0; i < size; i++) {
-		if (symbolsUnsorted[i] == searchSymbol)
+		if (symbols[i] == searchSymbol)
 			return i;
 	}
 	return -1;
