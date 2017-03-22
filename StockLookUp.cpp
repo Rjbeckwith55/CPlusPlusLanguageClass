@@ -17,29 +17,29 @@ using namespace std;
 into arrays, display sorted trading symbols 3 to a line, prompt user for trading
 symbol to search, and display result of trading symbol search with 2 digits
 precision for floating point numbers*/
-void sortSelect(string *symbols[], int size);
+void sortSelect(string * symbol, int size);
 
 int main() {
 	fstream inpFile;
 	string fileName;
+	string searchSymbol;
 
 	//Initialize variables to 0
 	int size = 0;
-	string *symbols = nullptr;
-	string *names = nullptr;
-	int *numShares = nullptr;
-	float *prices = nullptr;
+	//string *symbols = nullptr;
+	//string *names = nullptr;
+	//int *numShares = nullptr;
+	//float *prices = nullptr;
 
 	//Prompt for the file name and open the file
-	//cout << "Input the name of the file: ";
-	//getline(cin, fileName);
-	fileName = "P3_stkPort.txt";
+	cout << "Enter the filename: ";
+	getline(cin, fileName);
+	//fileName = "C:\\Users\\rjbec\\Desktop\\P3_stkPort.txt";
 	inpFile.open(fileName, ios::in);
 
 	//Check if the file exists
 	if (inpFile) {
 		inpFile >> size;
-		cout << size << endl;
 
 		//Declare dynamic arrays using smart pointers
 		unique_ptr<string[]> symbols(new string[size]);
@@ -56,8 +56,20 @@ int main() {
 			cout << symbols[i] << names[i] << numShares[i] << prices[i] << endl;
 			i++;
 		}
-		//sortSelect(symbols, size);
-		
+		sortSelect(symbols.get(), size);
+
+		//Output sorted stocks
+		int counter = 0;
+		cout << "Available stocks: " << endl;
+		cout << endl;
+		for (int i = 0; i < size; i++) {
+			if (counter % 3 == 0)
+				cout << endl;
+			cout << symbols[i]<<' ';
+			counter++;
+		}
+		cout << "Enter the symbol: ";
+		getline(cin,searchSymbol)
 
 	}
 	else {
@@ -69,15 +81,15 @@ int main() {
 	return 0;
 }
 
-void sortSelect(string *symbols[], int size) {
+void sortSelect(string * symbols, int size) {
 	int startScan, minIndex;
-	string *minElem;
+	string minElem;
 	for (startScan = 0; startScan < (size - 1); startScan++) {
 		minIndex = startScan;
 		minElem = symbols[startScan];
 		for (int index = startScan + 1; index < size; index++) {
 
-		if (*(symbols[index]) < *minElem)
+		if ((symbols[index]) < minElem)
 		{
 			minElem = symbols[index];
 			minIndex = index;
@@ -86,4 +98,5 @@ void sortSelect(string *symbols[], int size) {
 	symbols[minIndex] = symbols[startScan];
 	symbols[startScan] = minElem;
 }
+	
 }
