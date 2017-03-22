@@ -11,7 +11,6 @@ Descr: Program that reads the stock data into parallel arrays and outputs it
 #include <string>
 #include <iomanip>
 #include <memory>
-#include <locale>
 using namespace std;
 
 /*Main function to open file, create and manage dynamic arrays, read data from file
