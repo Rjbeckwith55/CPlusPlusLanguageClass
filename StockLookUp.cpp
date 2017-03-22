@@ -31,8 +31,9 @@ int main() {
 	float *prices = nullptr;
 
 	//Prompt for the file name and open the file
-	cout << "Input the name of the file: ";
-	getline(cin, fileName);
+	//cout << "Input the name of the file: ";
+	//getline(cin, fileName);
+	fileName = "P3_stkPort.txt";
 	inpFile.open(fileName, ios::in);
 
 	//Check if the file exists
@@ -49,7 +50,9 @@ int main() {
 		//Read data into parallel arrays
 		int i = 0;
 		while (!inpFile.eof()) {
-			inpFile >> symbols[i] >> names[i] >> numShares[i] >> prices[i];
+			inpFile >> symbols[i];
+			getline(inpFile,names[i], '#');
+			inpFile >> numShares[i] >> prices[i];
 			cout << symbols[i] << names[i] << numShares[i] << prices[i] << endl;
 			i++;
 		}

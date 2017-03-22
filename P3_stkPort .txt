@@ -1,0 +1,6 @@
+5
+MCD McDonald's Corporation# 35 99.25
+HD The Home Depot, Inc.# 31 115.54
+F Ford Motor Co.# 288 16.49
+WMT Wal-Mart Stores Inc.# 10 83.33
+BA The Boeing Company# 24 151.46
