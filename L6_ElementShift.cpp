@@ -34,7 +34,7 @@ int main()
 	}
 	else
 		cout << "Array not created" << endl;
-
+	delete arrCopy;
 	return 0;
 }
 
@@ -48,6 +48,10 @@ int main()
 // ********************************************************
 int *shift(int arr[], int size)
 {
+	for (int i = size; i > 0; i--) {
+		*(arr + i) = *(arr + i - 1);
+	}
+	arr[0] = 0;
 	return arr;  // only for compilation purposes; remove from final
 }
 
