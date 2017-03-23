@@ -48,11 +48,12 @@ int main()
 // ********************************************************
 int *shift(int arr[], int size)
 {
+	int *arrCopy = new int[size + 1];
 	for (int i = size; i > 0; i--) {
-		*(arr + i) = *(arr + i - 1);
+		*(arrCopy + i) = *(arr + i - 1);
 	}
-	arr[0] = 0;
-	return arr;  // only for compilation purposes; remove from final
+	arrCopy[0] = 0;
+	return arrCopy;  // only for compilation purposes; remove from final
 }
 
 // ********************************************************
