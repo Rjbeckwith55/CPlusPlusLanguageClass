@@ -98,16 +98,23 @@ int main() {
 		int width = 30;
 
 		//Output all the data for the requested trading symbol
-		cout << setw(width) << left << "Company Name: " << right << setw(width) << names[foundIndex] << endl;;
-		cout << setw(width) << left << "Number of Shares: " << right << setw(width) << numShares[foundIndex] << endl;;
-		cout << setw(width) << left << "Current Price (per share): " << right << setw(width) << prices[foundIndex] << endl;;
-		cout << setw(width) << left << "Current Value: " << right << setw(width) << value << endl;
+		if (foundIndex != -1)
+		{
+			cout << setw(width) << left << "Company Name: " << right << setw(width) << names[foundIndex] << endl;;
+			cout << setw(width) << left << "Number of Shares: " << right << setw(width) << numShares[foundIndex] << endl;;
+			cout << setw(width) << left << "Current Price (per share): " << right << setw(width) << prices[foundIndex] << endl;;
+			cout << setw(width) << left << "Current Value: " << right << setw(width) << value << endl;
+		}
+		else {
+			cout << "Trading symbol not found!" << endl;
+			exit(-2);
+		}
 
 
 	}
 	//Exit if the file does not exist
 	else {
-		cout << "Error opening file" << endl;
+		cout << "Error opening file!" << endl;
 		exit(-1);
 	}
 
@@ -153,3 +160,20 @@ void sortSelect(string * symbols, int size) {
 	}
 
 }
+/*EXAMPLE OUTPUT
+Enter the filename: C:\Users\cod_user\Source\Repos\CPlusPlusLanguageClass\P3_stkPort .txt
+Available stocks:
+
+
+BA F HD
+MCD WMT
+
+Enter the symbol: Hd
+
+
+Company Name:                           The Home Depot, Inc.
+Number of Shares:                                         31
+Current Price (per share):                            115.54
+Current Value:                                       3581.74
+Press any key to continue . . .
+*/
