@@ -13,13 +13,13 @@ Descr: Program that reads the stock data into parallel arrays and outputs it
 #include <memory>
 using namespace std;
 
+void sortSelect(string * symbol, int size);
+int linearSearch(string * symbols, int size, string searchSymbol);
+
 /*Main function to open file, create and manage dynamic arrays, read data from file
 into arrays, display sorted trading symbols 3 to a line, prompt user for trading
 symbol to search, and display result of trading symbol search with 2 digits
 precision for floating point numbers*/
-void sortSelect(string * symbol, int size);
-int linearSearch(string * symbols, int size, string searchSymbol);
-
 int main() {
 	//Declare variables
 	fstream inpFile;
