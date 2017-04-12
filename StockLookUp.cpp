@@ -13,13 +13,13 @@ Descr: Program that reads the stock data into parallel arrays and outputs it
 #include <memory>
 using namespace std;
 
+void sortSelect(string * symbol, int size);
+int linearSearch(string * symbols, int size, string searchSymbol);
+
 /*Main function to open file, create and manage dynamic arrays, read data from file
 into arrays, display sorted trading symbols 3 to a line, prompt user for trading
 symbol to search, and display result of trading symbol search with 2 digits
 precision for floating point numbers*/
-void sortSelect(string * symbol, int size);
-int linearSearch(string * symbols, int size, string searchSymbol);
-
 int main() {
 	//Declare variables
 	fstream inpFile;
@@ -45,7 +45,7 @@ int main() {
 
 		//Read data into parallel arrays
 		int i = 0;
-		while (!inpFile.eof()) {
+		while (!inpFile.eof() && i < size) {
 			inpFile >> symbols[i];
 			getline(inpFile, names[i], '#');
 			inpFile >> numShares[i] >> prices[i];
@@ -72,7 +72,7 @@ int main() {
 			//Output 3 to a line
 			if (counter % 3 == 0)
 				cout << endl;
-			cout << symbolsptr[i] << ' ';
+			cout << symbolsptr[i]<<' ';
 			counter++;
 		}
 
@@ -98,16 +98,23 @@ int main() {
 		int width = 30;
 
 		//Output all the data for the requested trading symbol
-		cout << setw(width) << left << "Company Name: " << right << setw(width) << names[foundIndex] << endl;;
-		cout << setw(width) << left << "Number of Shares: " << right << setw(width) << numShares[foundIndex] << endl;;
-		cout << setw(width) << left << "Current Price (per share): " << right << setw(width) << prices[foundIndex] << endl;;
-		cout << setw(width) << left << "Current Value: " << right << setw(width) << value << endl;
+		if (foundIndex != -1)
+		{
+			cout << setw(width) << left << "Company Name: " << right << setw(width) << names[foundIndex] << endl;;
+			cout << setw(width) << left << "Number of Shares: " << right << setw(width) << numShares[foundIndex] << endl;;
+			cout << setw(width) << left << "Current Price (per share): " << right << setw(width) << prices[foundIndex] << endl;;
+			cout << setw(width) << left << "Current Value: " << right << setw(width) << value << endl;
+		}
+		else {
+			cout << "Trading symbol not found!" << endl;
+			exit(-2);
+		}
 
 
 	}
 	//Exit if the file does not exist
 	else {
-		cout << "Error opening file" << endl;
+		cout << "Error opening file!" << endl;
 		exit(-1);
 	}
 
@@ -153,3 +160,15 @@ void sortSelect(string * symbols, int size) {
 	}
 
 }
+/*EXAMPLE OUTPUT
+Enter the filename: C:\Users\cod_user\Source\Repos\CPlusPlusLanguageClass\P3_stkPort .txt
+Available stocks:
+BA F HD
+MCD WMT
+Enter the symbol: Hd
+Company Name:                           The Home Depot, Inc.
+Number of Shares:                                         31
+Current Price (per share):                            115.54
+Current Value:                                       3581.74
+Press any key to continue . . .
+*/

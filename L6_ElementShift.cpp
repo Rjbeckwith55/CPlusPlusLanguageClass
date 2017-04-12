@@ -3,7 +3,7 @@ L6_ElementShift.cpp
 3/22/16
 CIS 2541
 Lab #6
-Descr:
+Descr: Shift the elements of the array over one
 */
 // Chapter 9, Programming Challenge 12: Element Shifter
 #include <iostream>
@@ -34,6 +34,7 @@ int main()
 	}
 	else
 		cout << "Array not created" << endl;
+	delete[] arrCopy;
 	return 0;
 }
 
@@ -47,11 +48,12 @@ int main()
 // ********************************************************
 int *shift(int arr[], int size)
 {
+	int *arrCopy = new int[size + 1];
 	for (int i = size; i > 0; i--) {
-		*(arr + i) = *(arr + i - 1);
+		*(arrCopy + i) = *(arr + i - 1);
 	}
-	arr[0] = 0;
-	return arr;  // only for compilation purposes; remove from final
+	arrCopy[0] = 0;
+	return arrCopy;  // only for compilation purposes; remove from final
 }
 
 // ********************************************************
@@ -67,3 +69,11 @@ void showArray(int arr[], int size)
 
 	cout << endl << endl;
 }
+/*Output
+The contents of the original array are:
+1 2 3 4 5
+
+The contents of the new array are:
+0 1 2 3 4 5
+
+Press any key to continue . . .*/
