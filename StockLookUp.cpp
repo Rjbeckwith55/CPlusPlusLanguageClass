@@ -45,7 +45,7 @@ int main() {
 
 		//Read data into parallel arrays
 		int i = 0;
-		while (!inpFile.eof()) {
+		while (!inpFile.eof() && i < size) {
 			inpFile >> symbols[i];
 			getline(inpFile, names[i], '#');
 			inpFile >> numShares[i] >> prices[i];
@@ -72,7 +72,7 @@ int main() {
 			//Output 3 to a line
 			if (counter % 3 == 0)
 				cout << endl;
-			cout << symbolsptr[i] << ' ';
+			cout << symbolsptr[i]<<' ';
 			counter++;
 		}
 
@@ -163,14 +163,9 @@ void sortSelect(string * symbols, int size) {
 /*EXAMPLE OUTPUT
 Enter the filename: C:\Users\cod_user\Source\Repos\CPlusPlusLanguageClass\P3_stkPort .txt
 Available stocks:
-
-
 BA F HD
 MCD WMT
-
 Enter the symbol: Hd
-
-
 Company Name:                           The Home Depot, Inc.
 Number of Shares:                                         31
 Current Price (per share):                            115.54
