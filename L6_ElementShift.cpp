@@ -34,7 +34,6 @@ int main()
 	}
 	else
 		cout << "Array not created" << endl;
-	delete arrCopy;
 	return 0;
 }
 

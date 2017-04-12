@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\StockLookUp.cpp" />
+    <ClCompile Include="..\..\L6_ElementShift.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8AA61DF4-B07E-4B09-AF18-4108D64E1A19}</ProjectGuid>

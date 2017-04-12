@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\StockLookUp.cpp">
+    <ClCompile Include="..\..\L6_ElementShift.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
