@@ -3,7 +3,7 @@ Robert Beckwith
 StructandEnum.cpp
 4/12/17
 Structured and Enumerated Data
-Descr: 
+Descr:
 */
 
 #include <iostream>
@@ -11,24 +11,32 @@ Descr:
 #include <iomanip>
 using namespace std;
 
-enum Purpose {BUSINESS=1, PERSONAL};
+enum Purpose { BUSINESS = 1, PERSONAL };
 struct Car {
 	string carMake;
 	string carModel;
 	int yearModel;
 	double cost;
-	Purpose purp
+	Purpose purp;
 };
 
-void displayCar(Car car[]) {
+void displayCar(Car car) {
 	cout << fixed;
 	cout << setprecision(2);
-	
-		cout << setw(10) << car.carMake;
-		cout << setw(10) << car.carModel;
-		cout << setw(10) << car.yearModel;
-		cout << setw(10) << car.cost;
-		cout << endl;
+	//Display the car
+	cout << setw(15) << car.carMake;
+	cout << setw(15) << car.carModel;
+	cout << setw(15) << car.yearModel;
+	cout << setw(15) << car.cost;
+	switch (car.purp) {
+	case BUSINESS:
+		cout << setw(15) << "BUSINESS";
+		break;
+	case PERSONAL:
+		cout << setw(15) << "PERSONAL";
+		break;
+	}
+	cout << endl;
 
 }
 
@@ -36,9 +44,9 @@ void displayCar(Car car[]) {
 
 int main() {
 	//Initialize car array with the first 3 elements
-	Car car[10]={{ "Ford","Taurus",1997,21000.00, BUSINESS},
-		     { "Honda","Accord",1992,11000.00, BUSINESS},
-		     {"Lamborghini","Aventador",2011,390000.00, PERSONAL}}
+	Car car[10] = { { "Ford","Taurus",1997,21000.00, BUSINESS},
+			 { "Honda","Accord",1992,11000.00, BUSINESS},
+			 {"Lamborghini","Aventador",2011,390000.00, PERSONAL} };
 	int purpNum;
 	//Get input for the 4th element 
 	cout << "Enter the car make: ";
@@ -50,14 +58,15 @@ int main() {
 	cout << "Enter the car cost: ";
 	cin >> car[3].cost;
 	cout << "Enter the pupose of the car(1 for Business and 2 for Personal): ";
-	cin >> car[3].purp;
-	
+	cin >> purpNum;
+	car[3].purp = static_cast<Purpose>(purpNum);
+
 	//Display the make, model,year,cost, and purpose of the cars in the array
-	cout << left << setw(10) << "Make" << setw(10) << "Model" << setw(10) << "Year" << setw(10) << "Cost" << setw(10) << "Purpose" << endl;
-	for(int i = 0; i < 4;i++){
+	cout << left << setw(15) << "Make" << setw(15) << "Model" << setw(15) << "Year" << setw(15) << "Cost" << setw(15) << "Purpose" << endl;
+	for (int i = 0; i < 4; i++) {
 		displayCar(car[i]);
 	}
-	
+
 
 	return 0;
 }
