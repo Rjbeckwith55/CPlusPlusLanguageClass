@@ -28,6 +28,8 @@ void displayCar(Car car[]) {
 	}
 }
 
+
+
 int main() {
 	Car car[10];
 	car[0] = { "Ford","Taurus",1997,21000.00 };
