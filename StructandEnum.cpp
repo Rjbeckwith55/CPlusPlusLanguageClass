@@ -11,23 +11,23 @@ Descr:
 #include <iomanip>
 using namespace std;
 
+enum Purpose {BUSINESS=1, PERSONAL};
 struct Car {
 	string carMake;
 	string carModel;
 	int yearModel;
 	double cost;
-	enum Purpose { BUSINESS = 1, PERSONAL };
+	Purpose purp
 };
 
 void displayCar(Car car[]) {
 	cout << fixed;
 	cout << setprecision(2);
-	cout << left << setw(10) << "Make" << setw(10) << "Model" << setw(10) << "Year" << setw(10) << "Cost" << setw(10) << "Purpose" << endl;
 	for (int i = 0; i < 4; i++) {
-		cout << setw(10) << car[i].carMake;
-		cout << setw(10) << car[i].carModel;
-		cout << setw(10) << car[i].yearModel;
-		cout << setw(10) << car[i].cost;
+		cout << setw(10) << car.carMake;
+		cout << setw(10) << car.carModel;
+		cout << setw(10) << car.yearModel;
+		cout << setw(10) << car.cost;
 		cout << endl;
 	}
 }
@@ -47,7 +47,11 @@ int main() {
 	cin >> car[3].yearModel;
 	cout << "Enter the car cost: ";
 	cin >> car[3].cost;
-	displayCar(car);
+	cout << left << setw(10) << "Make" << setw(10) << "Model" << setw(10) << "Year" << setw(10) << "Cost" << setw(10) << "Purpose" << endl;
+	for(int i = 0; i < 4;i++){
+		displayCar(car[i]);
+	}
+	
 
 	return 0;
 }
