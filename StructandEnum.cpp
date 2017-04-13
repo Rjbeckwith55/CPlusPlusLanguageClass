@@ -23,22 +23,24 @@ struct Car {
 void displayCar(Car car[]) {
 	cout << fixed;
 	cout << setprecision(2);
-	for (int i = 0; i < 4; i++) {
+	
 		cout << setw(10) << car.carMake;
 		cout << setw(10) << car.carModel;
 		cout << setw(10) << car.yearModel;
 		cout << setw(10) << car.cost;
 		cout << endl;
-	}
+
 }
 
 
 
 int main() {
-	Car car[10];
-	car[0] = { "Ford","Taurus",1997,21000.00, 1 };
-	car[1] = { "Honda","Accord",1992,11000.00, 1 };
-	car[2] = { "Lamborghini","Aventador",2011,390000.00, 1 };
+	//Initialize car array with the first 3 elements
+	Car car[10]={{ "Ford","Taurus",1997,21000.00, BUSINESS},
+		     { "Honda","Accord",1992,11000.00, BUSINESS},
+		     {"Lamborghini","Aventador",2011,390000.00, PERSONAL}}
+	int purpNum;
+	//Get input for the 4th element 
 	cout << "Enter the car make: ";
 	getline(cin, car[3].carMake);
 	cout << "Enter the car model: ";
@@ -47,6 +49,10 @@ int main() {
 	cin >> car[3].yearModel;
 	cout << "Enter the car cost: ";
 	cin >> car[3].cost;
+	cout << "Enter the pupose of the car(1 for Business and 2 for Personal): ";
+	cin >> car[3].purp;
+	
+	//Display the make, model,year,cost, and purpose of the cars in the array
 	cout << left << setw(10) << "Make" << setw(10) << "Model" << setw(10) << "Year" << setw(10) << "Cost" << setw(10) << "Purpose" << endl;
 	for(int i = 0; i < 4;i++){
 		displayCar(car[i]);
