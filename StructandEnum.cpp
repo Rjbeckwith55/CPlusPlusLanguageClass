@@ -3,7 +3,7 @@ Robert Beckwith
 StructandEnum.cpp
 4/12/17
 Structured and Enumerated Data
-Descr:
+Descr: Program that reads a car make model and and asks if it is for business or personal
 */
 
 #include <iostream>
