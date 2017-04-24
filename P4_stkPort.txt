@@ -1,0 +1,15 @@
+RDEN Elizabeth Arden Inc# 40 25 13.25 9.8
+AVP Avon Products Inc# 40 12 5.0 5.03
+COH Coach Inc# 40 16 39.0 41.2
+BAC Bank of America Corp# 30 23 20.5 14.25
+WFC Wells Fargo & Co# 30 9 48.2 48.21
+V Visa# 30 12 83.4 80.1
+JNJ Johnson & Johnson# 20 3 105.2 109.82
+LLY Eli Lilly and Company# 20 5 73.2 75.19
+RPTP Raptor Pharmaceutical Corp# 20 18 5.6 5.64
+CA CA Inc# 10 10 30.0 30.05
+SYMC Symantec Corp# 10 7 20.8 17.9
+TWTR Twitter Inc# 10 12 15.25 17.7
+EIX Edison International# 50 2 71.03 71.0
+HE Hawaiian Electric Industries Inc# 50 22 25.5 32.60
+POR Portland General Electric# 50 9 43.6 39.54
