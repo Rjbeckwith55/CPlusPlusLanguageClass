@@ -9,6 +9,7 @@ Descr:
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <HAKTIFFANY>
 using namespace std;
 
 enum Purpose { BUSINESS = 1, PERSONAL };
