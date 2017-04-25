@@ -8,31 +8,45 @@ Description: Stock class definition --> implementation file*/
 
 
 Stock::Stock() {
-	cout << "\n\tDefault Constructor called.\n";
 }
 Stock::~Stock() {
-	cout << "\n\tDestructor called.\n";
 }
 Stock::Stock(string s, string n, sector sec, int num, float p, float cp) {
 	symbol = s;
 	name = n;
+	sect = sec;
 	numShares = num;
 	purchasePrice = p;
 	currentPrice = cp;
 }
-enum getCurrStatus { GAIN, LOSS, BREAKEVEN };
+const float Stock::TAX_RATE = .15;
 
-float Stock::getGainAmt() {
-	int gain;
-	if (1 == GAIN) {
-		gain = numShares*(currentPrice - purchasePrice);
-		return gain;
+Stock::Status Stock::getCurrStatus(Stock stk) {
+	Status stat;
+	if (stk.currentPrice - .05 > stk.purchasePrice) {
+		stat = GAIN;
+		return stat;
 	}
+	else if (stk.currentPrice + .05 < stk.purchasePrice)
+	{
+		stat = LOSS;
+		return stat;
+	}
+	else
+	{
+		stat = BREAKEVEN;
+		return stat;
+	}
+		
+}
+
+float Stock::getGainAmt(Stock stk) {
+	float gain;
+	if (stk.numShares*(stk.currentPrice - stk.purchasePrice) != 0)
+		return stk.numShares*(stk.currentPrice - stk.purchasePrice);
 	else
 		return 0.0;
 }
-float Stock::getTaxGainAmt() {
-	int gainAmt;
-	gainAmt = getGainAmt();
-	return gainAmt + (gainAmt * .15);
+float Stock::getTaxGainAmt(float gainAmt) {	
+	return (gainAmt * Stock::TAX_RATE);
 }

@@ -1,0 +1,42 @@
+Prepared Portfolio Analysis Summarized by Sector
+Long Term Capital Gain Tax Rate = 0.15
+Symbol    Company                                                                        Status
+======    =======                                                                        ======
+CA         CA Inc                                                                     BREAKEVEN
+SYMC       Symantec Corp                                                                   LOSS
+TWTR       Twitter Inc                                                                     GAIN
+                              Summary for sector:           TECHNOLOGY
+                                     Gain amount:                29.40
+                                     Tax on Gain:                 4.41
+Symbol    Company                                                                        Status
+======    =======                                                                        ======
+JNJ        Johnson & Johnson                                                               GAIN
+LLY        Eli Lilly and Company                                                           GAIN
+RPTP       Raptor Pharmaceutical Corp                                                 BREAKEVEN
+                              Summary for sector:               HEALTH
+                                     Gain amount:                23.81
+                                     Tax on Gain:                 3.57
+Symbol    Company                                                                        Status
+======    =======                                                                        ======
+BAC        Bank of America Corp                                                            LOSS
+WFC        Wells Fargo & Co                                                           BREAKEVEN
+V          Visa                                                                            LOSS
+                              Summary for sector:            FINANCIAL
+                                     Gain amount:                 0.00
+                                     Tax on Gain:                 0.00
+Symbol    Company                                                                        Status
+======    =======                                                                        ======
+RDEN       Elizabeth Arden Inc                                                             LOSS
+AVP        Avon Products Inc                                                          BREAKEVEN
+COH        Coach Inc                                                                       GAIN
+                              Summary for sector:       CONSUMER GOODS
+                                     Gain amount:                35.20
+                                     Tax on Gain:                 5.28
+Symbol    Company                                                                        Status
+======    =======                                                                        ======
+EIX        Edison International                                                       BREAKEVEN
+HE         Hawaiian Electric Industries Inc                                                GAIN
+POR        Portland General Electric                                                       LOSS
+                              Summary for sector:            UTILITIES
+                                     Gain amount:               156.20
+                                     Tax on Gain:                23.43
