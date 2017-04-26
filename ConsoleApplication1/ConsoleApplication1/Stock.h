@@ -11,8 +11,8 @@ Description: Stock class declaration --> specification file*/
 using namespace std;
 
 //Prevent multiple class delcarations 
-#ifndef STUDENT_H
-#define STUDENT_H
+#ifndef STOCK_H
+#define STOCK_H
 
 
 class Stock {
