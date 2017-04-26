@@ -40,6 +40,7 @@ Stock::Status Stock::getCurrStatus(Stock stk) {
 		
 }
 
+// Calculates the amount gain by calculating the difference between purchasePrice and currentPrice
 float Stock::getGainAmt(Stock stk) {
 	float gain;
 	if (stk.numShares*(stk.currentPrice - stk.purchasePrice) != 0)
