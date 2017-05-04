@@ -10,6 +10,7 @@ TWTR       Twitter Inc                                                          
                                      Tax on Gain:                 4.41
 Symbol    Company                                                                        Status
 ======    =======                                                                        ======
+RDEN       Elizabeth Arden Inc                                                             LOSS
 JNJ        Johnson & Johnson                                                               GAIN
 LLY        Eli Lilly and Company                                                           GAIN
 RPTP       Raptor Pharmaceutical Corp                                                 BREAKEVEN
@@ -18,18 +19,12 @@ RPTP       Raptor Pharmaceutical Corp                                           
                                      Tax on Gain:                 3.57
 Symbol    Company                                                                        Status
 ======    =======                                                                        ======
+AVP        Avon Products Inc                                                          BREAKEVEN
+COH        Coach Inc                                                                       GAIN
 BAC        Bank of America Corp                                                            LOSS
 WFC        Wells Fargo & Co                                                           BREAKEVEN
 V          Visa                                                                            LOSS
                               Summary for sector:            FINANCIAL
-                                     Gain amount:                 0.00
-                                     Tax on Gain:                 0.00
-Symbol    Company                                                                        Status
-======    =======                                                                        ======
-RDEN       Elizabeth Arden Inc                                                             LOSS
-AVP        Avon Products Inc                                                          BREAKEVEN
-COH        Coach Inc                                                                       GAIN
-                              Summary for sector:       CONSUMER GOODS
                                      Gain amount:                35.20
                                      Tax on Gain:                 5.28
 Symbol    Company                                                                        Status

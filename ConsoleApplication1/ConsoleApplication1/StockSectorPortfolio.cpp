@@ -92,6 +92,7 @@ void CalculatePortfolio(Stock stks[], int size) {
 
 	// Variables for setw()
 	int w1 = 35, w2 = 50, w3 = 20, w4 = 50, w5 = 10;
+	int numSectors;
 	
 	// Get the filename and open it for writing
 	cout << "Please enter a filename to write to: ";
@@ -106,20 +107,21 @@ void CalculatePortfolio(Stock stks[], int size) {
 	//Format the output file decimal places
 	outFile.precision(2);
 	outFile.setf(ios::fixed);
-
-	for (int i = 0; i < 5; i++) { // 5 = number of sectors
-		// Output the header for the column for each sector to the file
-		outFile << left << setw(w5) << "Symbol" << setw(w1) << "Company" << setw(w2) << right << "Status" << endl;
-		outFile << left << setw(w5) << "======" << setw(w1) << "=======" << setw(w2) << right << "======" << endl;
-		// Reset the gain calculation after every sector is looped through
-		totalGain = 0;
+	for (int i = 0; i < size; i++) {
+		
 		
 		// Loop through the data of that sector and output it to the file
-		while (x < size) {
-			outFile << left << setw(w5) << stks[x].getSymbol() << setw(w1) << stks[x].getName();
+			if (i==0 || stks[i].getSector() != stks[i -1].getSector()) {
+				// Output the header for the column for each sector to the file
+				outFile << left << setw(w5) << "Symbol" << setw(w1) << "Company" << setw(w2) << right << "Status" << endl;
+				outFile << left << setw(w5) << "======" << setw(w1) << "=======" << setw(w2) << right << "======" << endl;
+				// Reset the gain calculation after every sector is looped through
+				totalGain = 0;
+			}
+			outFile << left << setw(w5) << stks[i].getSymbol() << setw(w1) << stks[i].getName();
 
 			// Switch statement to output the enumerated datatype for satus
-			switch (stk.getCurrStatus(stks[x])) {
+			switch (stk.getCurrStatus(stks[i])) {
 			case 0:
 				outFile << setw(w2) << right << "GAIN" << endl;
 				break;
@@ -131,44 +133,46 @@ void CalculatePortfolio(Stock stks[], int size) {
 				break;
 			}
 			// If the stock shows a gain add it to the total for this sector
-			if (stks[x].getCurrStatus(stks[x]) == 0) // 0 is enumerated for GAIN
-				totalGain += stks[x].getGainAmt(stks[x]);
+			if (stks[i].getCurrStatus(stks[i]) == 0) // 0 is enumerated for GAIN
+				totalGain += stks[i].getGainAmt(stks[i]);
 			// If the next stock is not part of this sector break out of the loop and move onto the next sector
-			if (stks[x].getSector() != stks[x + 1].getSector()) {
-				x++;
+		
+
+		if (stks[i + 1].getSector() != stks[i].getSector()) {
+			outFile << setw(w4) << right << "Summary for sector: ";
+
+			// Switch statement to output the enumerated datatype for sector
+			switch (stks[i].getSector())
+			{
+			case 10:
+				outFile << setw(w3) << right << "TECHNOLOGY" << endl;
+				break;
+			case 20:
+				outFile << setw(w3) << right << "HEALTH" << endl;
+				break;
+			case 30:
+				outFile << setw(w3) << right << "FINANCIAL" << endl;
+				break;
+			case 40:
+				outFile << setw(w3) << right << "CONSUMER GOODS" << endl;
+				break;
+			case 50:
+				outFile << setw(w3) << right << "UTILITIES" << endl;
 				break;
 			}
-
-			x++;
+			// Output the gain and the tax on the gain to the file.
+			outFile << setw(w4) << right << "Gain amount: " << setw(w3) << totalGain << endl;
+			outFile << setw(w4) << right << "Tax on Gain: " << setw(w3) << stk.getTaxGainAmt(totalGain) << endl;
 		}
-
-
-		outFile << setw(w4) << right << "Summary for sector: ";
-
-		// Switch statement to output the enumerated datatype for sector
-		switch (stks[x - 1].getSector())
-		{
-		case 10:
-			outFile << setw(w3) << right << "TECHNOLOGY" << endl;
-			break;
-		case 20:
-			outFile << setw(w3) << right << "HEALTH" << endl;
-			break;
-		case 30:
-			outFile << setw(w3) << right << "FINANCIAL" << endl;
-			break;
-		case 40:
-			outFile << setw(w3) << right << "CONSUMER GOODS" << endl;
-			break;
-		case 50:
-			outFile << setw(w3) << right << "UTILITIES" << endl;
-			break;
-		}
-		// Output the gain and the tax on the gain to the file.
-		outFile << setw(w4) << right << "Gain amount: " << setw(w3) << totalGain << endl;
-		outFile << setw(w4) << right  << "Tax on Gain: " << setw(w3) << stk.getTaxGainAmt(totalGain) << endl;
 	}
 
 	outFile.close();
 	cout << "The report has been created." << endl;
 }
+/* SAMPLE OUTPUT
+Please enter a filename to read from: D:\Users\rjbec_000\Documents\CPlusPlusLanguageClass\P4_stkPort.txt
+Please enter a filename to write to: output.txt
+
+The report has been created.
+Press any key to continue . . .
+*/
