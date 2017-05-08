@@ -92,8 +92,7 @@ void CalculatePortfolio(Stock stks[], int size) {
 
 	// Variables for setw()
 	int w1 = 35, w2 = 50, w3 = 20, w4 = 50, w5 = 10;
-	int numSectors;
-	
+
 	// Get the filename and open it for writing
 	cout << "Please enter a filename to write to: ";
 	getline(cin, fileName);
@@ -108,35 +107,35 @@ void CalculatePortfolio(Stock stks[], int size) {
 	outFile.precision(2);
 	outFile.setf(ios::fixed);
 	for (int i = 0; i < size; i++) {
-		
-		
-		// Loop through the data of that sector and output it to the file
-			if (i==0 || stks[i].getSector() != stks[i -1].getSector()) {
-				// Output the header for the column for each sector to the file
-				outFile << left << setw(w5) << "Symbol" << setw(w1) << "Company" << setw(w2) << right << "Status" << endl;
-				outFile << left << setw(w5) << "======" << setw(w1) << "=======" << setw(w2) << right << "======" << endl;
-				// Reset the gain calculation after every sector is looped through
-				totalGain = 0;
-			}
-			outFile << left << setw(w5) << stks[i].getSymbol() << setw(w1) << stks[i].getName();
 
-			// Switch statement to output the enumerated datatype for satus
-			switch (stk.getCurrStatus(stks[i])) {
-			case Stock::GAIN:
-				outFile << setw(w2) << right << "GAIN" << endl;
-				break;
-			case Stock::LOSS:
-				outFile << setw(w2) << right << "LOSS" << endl;
-				break;
-			case Stock::BREAKEVEN:
-				outFile << setw(w2) << right << "BREAKEVEN" << endl;
-				break;
-			}
-			// If the stock shows a gain add it to the total for this sector
-			if (stks[i].getCurrStatus(stks[i]) == 0) // 0 is enumerated for GAIN
-				totalGain += stks[i].getGainAmt(stks[i]);
-			// If the next stock is not part of this sector break out of the loop and move onto the next sector
-		
+
+		// Loop through the data of that sector and output it to the file
+		if (i == 0 || stks[i].getSector() != stks[i - 1].getSector()) {
+			// Output the header for the column for each sector to the file
+			outFile << left << setw(w5) << "Symbol" << setw(w1) << "Company" << setw(w2) << right << "Status" << endl;
+			outFile << left << setw(w5) << "======" << setw(w1) << "=======" << setw(w2) << right << "======" << endl;
+			// Reset the gain calculation after every sector is looped through
+			totalGain = 0;
+		}
+		outFile << left << setw(w5) << stks[i].getSymbol() << setw(w1) << stks[i].getName();
+
+		// Switch statement to output the enumerated datatype for satus
+		switch (stk.getCurrStatus(stks[i])) {
+		case Stock::GAIN:
+			outFile << setw(w2) << right << "GAIN" << endl;
+			break;
+		case Stock::LOSS:
+			outFile << setw(w2) << right << "LOSS" << endl;
+			break;
+		case Stock::BREAKEVEN:
+			outFile << setw(w2) << right << "BREAKEVEN" << endl;
+			break;
+		}
+		// If the stock shows a gain add it to the total for this sector
+		if (stks[i].getCurrStatus(stks[i]) == Stock::GAIN) 
+			totalGain += stks[i].getGainAmt(stks[i]);
+		// If the next stock is not part of this sector break out of the loop and move onto the next sector
+
 
 		if (stks[i + 1].getSector() != stks[i].getSector()) {
 			outFile << setw(w4) << right << "Summary for sector: ";
@@ -172,7 +171,52 @@ void CalculatePortfolio(Stock stks[], int size) {
 /* SAMPLE OUTPUT
 Please enter a filename to read from: D:\Users\rjbec_000\Documents\CPlusPlusLanguageClass\P4_stkPort.txt
 Please enter a filename to write to: output.txt
-
 The report has been created.
 Press any key to continue . . .
+
+*****output.txt*****
+
+Prepared Portfolio Analysis Summarized by Sector
+Long Term Capital Gain Tax Rate = 0.15
+Symbol    Company                                                                        Status
+======    =======                                                                        ======
+CA         CA Inc                                                                     BREAKEVEN
+SYMC       Symantec Corp                                                                   LOSS
+TWTR       Twitter Inc                                                                     GAIN
+                              Summary for sector:           TECHNOLOGY
+                                     Gain amount:                29.40
+                                     Tax on Gain:                 4.41
+Symbol    Company                                                                        Status
+======    =======                                                                        ======
+JNJ        Johnson & Johnson                                                               GAIN
+LLY        Eli Lilly and Company                                                           GAIN
+RPTP       Raptor Pharmaceutical Corp                                                 BREAKEVEN
+                              Summary for sector:               HEALTH
+                                     Gain amount:                23.81
+                                     Tax on Gain:                 3.57
+Symbol    Company                                                                        Status
+======    =======                                                                        ======
+BAC        Bank of America Corp                                                            LOSS
+WFC        Wells Fargo & Co                                                           BREAKEVEN
+V          Visa                                                                            LOSS
+                              Summary for sector:            FINANCIAL
+                                     Gain amount:                 0.00
+                                     Tax on Gain:                 0.00
+Symbol    Company                                                                        Status
+======    =======                                                                        ======
+RDEN       Elizabeth Arden Inc                                                             LOSS
+AVP        Avon Products Inc                                                          BREAKEVEN
+COH        Coach Inc                                                                       GAIN
+                              Summary for sector:       CONSUMER GOODS
+                                     Gain amount:                35.20
+                                     Tax on Gain:                 5.28
+Symbol    Company                                                                        Status
+======    =======                                                                        ======
+EIX        Edison International                                                       BREAKEVEN
+HE         Hawaiian Electric Industries Inc                                                GAIN
+POR        Portland General Electric                                                       LOSS
+                              Summary for sector:            UTILITIES
+                                     Gain amount:               156.20
+                                     Tax on Gain:                23.43
+
 */
