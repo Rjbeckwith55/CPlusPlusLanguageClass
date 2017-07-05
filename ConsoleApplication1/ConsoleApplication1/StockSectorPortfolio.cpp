@@ -120,13 +120,13 @@ void CalculatePortfolio(Stock stks[], int size) {
 
 			// Switch statement to output the enumerated datatype for satus
 			switch (stk.getCurrStatus(stks[x])) {
-			case 0:
+			case Stock::GAIN:
 				outFile << setw(w2) << right << "GAIN" << endl;
 				break;
-			case 1:
+			case Stock::LOSS:
 				outFile << setw(w2) << right << "LOSS" << endl;
 				break;
-			case 2:
+			case Stock::BREAKEVEN:
 				outFile << setw(w2) << right << "BREAKEVEN" << endl;
 				break;
 			}
@@ -148,19 +148,19 @@ void CalculatePortfolio(Stock stks[], int size) {
 		// Switch statement to output the enumerated datatype for sector
 		switch (stks[x - 1].getSector())
 		{
-		case 10:
+		case Stock::TECHNOLOGY:
 			outFile << setw(w3) << right << "TECHNOLOGY" << endl;
 			break;
-		case 20:
+		case Stock::HEALTH:
 			outFile << setw(w3) << right << "HEALTH" << endl;
 			break;
-		case 30:
+		case Stock::FINANCIAL:
 			outFile << setw(w3) << right << "FINANCIAL" << endl;
 			break;
-		case 40:
+		case Stock::CONSUMER_GOODS:
 			outFile << setw(w3) << right << "CONSUMER GOODS" << endl;
 			break;
-		case 50:
+		case Stock::UTILITIES:
 			outFile << setw(w3) << right << "UTILITIES" << endl;
 			break;
 		}
