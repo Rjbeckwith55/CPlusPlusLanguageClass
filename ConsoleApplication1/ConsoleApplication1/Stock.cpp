@@ -19,7 +19,7 @@ Stock::Stock(string s, string n, sector sec, int num, float p, float cp) {
 	purchasePrice = p;
 	currentPrice = cp;
 }
-const float Stock::TAX_RATE = .15;
+const float Stock::TAX_RATE = static_cast<float>(.15) ;
 
 Stock::Status Stock::getCurrStatus(Stock stk) {
 	Status stat;
@@ -37,17 +37,16 @@ Stock::Status Stock::getCurrStatus(Stock stk) {
 		stat = BREAKEVEN;
 		return stat;
 	}
-		
+
 }
 
 // Calculates the amount gain by calculating the difference between purchasePrice and currentPrice
 float Stock::getGainAmt(Stock stk) {
-	float gain;
 	if (stk.numShares*(stk.currentPrice - stk.purchasePrice) != 0)
 		return stk.numShares*(stk.currentPrice - stk.purchasePrice);
 	else
 		return 0.0;
 }
-float Stock::getTaxGainAmt(float gainAmt) {	
+float Stock::getTaxGainAmt(float gainAmt) {
 	return (gainAmt * Stock::TAX_RATE);
 }

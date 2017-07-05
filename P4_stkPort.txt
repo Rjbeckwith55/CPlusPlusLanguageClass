@@ -1,6 +1,6 @@
-RDEN Elizabeth Arden Inc# 40 25 13.25 9.8
-AVP Avon Products Inc# 40 12 5.0 5.03
-COH Coach Inc# 40 16 39.0 41.2
+RDEN Elizabeth Arden Inc# 20 25 13.25 9.8
+AVP Avon Products Inc# 30 12 5.0 5.03
+COH Coach Inc# 30 16 39.0 41.2
 BAC Bank of America Corp# 30 23 20.5 14.25
 WFC Wells Fargo & Co# 30 9 48.2 48.21
 V Visa# 30 12 83.4 80.1
