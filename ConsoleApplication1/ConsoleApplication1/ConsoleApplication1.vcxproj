@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Herven.cpp" />
+    <ClCompile Include="..\..\2485 Lab 3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\class.dat" />
