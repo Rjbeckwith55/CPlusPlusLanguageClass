@@ -5,37 +5,15 @@
 using namespace std;
 
 
-int calGrade(float FG, int Exam1, int Exam2, int HW, int FEG , int ID) {
+float calGrade(float FG, int Exam1, int Exam2, int HW, int FEG , int ID) {
 	FG = ((.20)*(Exam1)) + ((.20)*(Exam2)) + ((.35)*(HW)) + ((.25)*(FEG));
 	return FG;
-}
-
-void readFile(float FG, int Exam1, int Exam2, int HW, int FEG, int ID) {
-	ifstream inFile;
-	inFile.open("class.dat");
-
-	if (inFile.fail())
-	{
-		cerr << "Error" << endl;
-	}
-	else
-	{
-		
-		char g;
-		while (!inFile.eof()) {
-			inFile >> ID >> Exam1 >> Exam2 >> HW >> FEG;
-			FG = calGrade(FG, Exam1, Exam2, HW, FEG, ID);
-		}
-
-		
-	}
-	inFile.close();
 }
 
 void writeFile(float FG, int Exam1, int Exam2, int HW, int FEG, int ID, char FLG) {
 	ofstream outFile;
 	outFile.open("Final.dat");
-	cout<<"OUTPUT";
+	cout << "OUTPUT";
 	if ((FG <= 100) && (FG >= 90))
 	{
 		FLG = 'A';
@@ -59,12 +37,36 @@ void writeFile(float FG, int Exam1, int Exam2, int HW, int FEG, int ID, char FLG
 	outFile << ID << Exam1 << Exam2 << HW << FEG << FG << FLG;
 
 }
+
+void readFile(float FG, int Exam1, int Exam2, int HW, int FEG, int ID, char FLG) {
+	ifstream inFile;
+	inFile.open("class.dat");
+
+	if (inFile.fail())
+	{
+		cerr << "Error" << endl;
+	}
+	else
+	{
+		
+		char g;
+		while (!inFile.eof()) {
+			inFile >> ID >> Exam1 >> Exam2 >> HW >> FEG;
+			FG = calGrade(FG, Exam1, Exam2, HW, FEG, ID);
+			writeFile(FG, Exam1, Exam2, HW, FEG, ID, FLG);
+		}
+
+		
+	}
+	inFile.close();
+}
+
+
 int main() {
-	int ID, Exam1, Exam2, HW, FEG;
-	float FG;
-	char FLG;
-	readFile(FG, Exam1, Exam2, HW, FEG, ID);
-	writeFile();
+	int ID=0, Exam1=0, Exam2=0, HW=0, FEG=0;
+	float FG=0.0;
+	char FLG=' ';
+	readFile(FG, Exam1, Exam2, HW, FEG, ID,FLG);
 	system("pause");
 
 }

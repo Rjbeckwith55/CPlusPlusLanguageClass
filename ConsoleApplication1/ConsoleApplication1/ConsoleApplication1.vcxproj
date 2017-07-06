@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="test.cpp" />
+    <ClCompile Include="..\..\Herven.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Stock.h" />
+    <None Include="..\..\class.dat" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8AA61DF4-B07E-4B09-AF18-4108D64E1A19}</ProjectGuid>
